@@ -9,7 +9,8 @@ This is a repository of game development lab, where students learn to build a Ti
 Fork this repo and get started with the project.
 
 ## Additional details:
-The font used is Fredoka One
+The font used is Fredoka One  
+
 
 Background clour is dodgerblue
 
