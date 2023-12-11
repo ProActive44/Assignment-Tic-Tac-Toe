@@ -28,18 +28,18 @@ function isWin() {
     let c = pattern[2];
 
     if (
-      gameBoard[a] &&
-      gameBoard[a] === gameBoard[b] &&
+      gameBoard[a] && // check if gameBoard[a] is exist
+      gameBoard[a] === gameBoard[b] && // check if gameBoard[a] , gameBoard[b] and gameBoard[c] are equal
       gameBoard[a] === gameBoard[c]
     ) {
-      return gameBoard[a];
+      return true;
     }
   }
-  return null;
+  return false;
 }
 
 function isDraw() {
-  return !gameBoard.includes("");
+  return !gameBoard.includes(""); // returns true or false based on gameBoard have any empty element ("")
 }
 
 // Iteration 3 : handle the box click
@@ -60,22 +60,21 @@ function handleClick(idx) {
     gameBoard[idx] = currPlayer;
 
     let winner = isWin();
-    // console.log(winner);
+    let draw = isDraw();
 
     if (winner) {
-    //   console.log(winner + " wins");
       resultBox.style.visibility = "visible";
       message.innerText = "Winner is " + currPlayer + "!!";
-    } else if (isDraw()) {
-    //   console.log("draw");
+    } else if (draw) {
       resultBox.style.visibility = "visible";
       message.innerText = "It's a Draw";
     } else {
-      if (currPlayer === "X") {
-        currPlayer = "O";
-      } else {
-        currPlayer = "X";
-      }
+      // if (currPlayer === "X") {
+      //   currPlayer = "O";
+      // } else {
+      //   currPlayer = "X";
+      // }
+      currPlayer = currPlayer === "X" ? "O" : "X"; // Alternative for commented out if else condition above
     }
   }
 }
@@ -86,11 +85,11 @@ let button = document.getElementById("button");
 button.onclick = resetGame;
 
 function resetGame() {
-//   resultBox.style.visibility = "hidden";
-//   currPlayer = "X";
-//   gameBoard = ["", "", "", "", "", "", "", "", ""];
-//   boxes.forEach(function (box) {
-//     box.innerHTML = "";
-//   });
-  history.go(0)
+  //   resultBox.style.visibility = "hidden";
+  //   currPlayer = "X";
+  //   gameBoard = ["", "", "", "", "", "", "", "", ""];
+  //   boxes.forEach(function (box) {
+  //     box.innerHTML = "";
+  //   });
+  history.go(0);         
 }
